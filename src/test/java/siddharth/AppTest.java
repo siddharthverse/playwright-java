@@ -1,11 +1,16 @@
 package siddharth;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.options.AriaRole;
 
 public class AppTest {
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {
+
+            LaunchOptions lp = new LaunchOptions();
+            lp.setChannel("chrome");
+            lp.setHeadless(false);
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
 
             Page page = browser.newPage();
